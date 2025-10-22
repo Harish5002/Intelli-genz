@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>INTELLI-GENZ 2K25 — Mahendra College of Engineering</title>
+  <meta name="description" content="One day national level technical symposium — INTELLI-GENZ 2K25 | Mahendra College of Engineering" />
+  <style>
+    /* ---------- Reset & base ---------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial; background:#060617; color:#eef2ff; -webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:30px auto;padding:24px}
+
+    /* ---------- Hero / Poster area ---------- */
+    .hero{position:relative;height:520px;border-radius:14px;overflow:hidden;box-shadow:0 10px 40px rgba(2,6,23,0.7)}
+
+    /* background layers for parallax */
+    .bg-layer{position:absolute;inset:0;background-position:center;background-size:cover;transition:transform .12s linear}
+    .bg-layer.bg-1{background-image:url('/mnt/data/eeeae3f8-52db-4b00-943b-8dafc3c58d27.jpg');filter:blur(0.6px) brightness(.35) saturate(.95)}
+    .bg-layer.bg-2{background:linear-gradient(120deg, rgba(10,24,90,0.25), rgba(120,12,80,0.15));mix-blend-mode:overlay}
+    .bg-layer.bg-3{background:radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06), transparent 6%), radial-gradient(circle at 90% 80%, rgba(255,255,255,0.03), transparent 20%);pointer-events:none}
+
+    /* floating streaks (CSS-generated shapes) */
+    .streaks{position:absolute;inset:0;pointer-events:none}
+    .streak{position:absolute;filter:blur(20px);opacity:.22;transform:rotate(10deg)}
+    .streak.s1{width:500px;height:40px;left:-60px;top:110px;background:linear-gradient(90deg,#00f5ff,#7b61ff)}
+    .streak.s2{width:420px;height:34px;right:-40px;top:220px;background:linear-gradient(90deg,#ff8ec4,#ffd36b)}
+
+    /* content in hero */
+    .hero-content{position:relative;z-index:6;display:grid;grid-template-columns:1fr 420px;gap:18px;height:100%;align-items:center;padding:36px}
+    .brand{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(255,255,255,0.02));backdrop-filter:blur(4px)}
+    .brand h1{font-family: 'Segoe Script', 'Brush Script MT', cursive;font-size:46px;letter-spacing:6px;margin-bottom:6px;color:#fff}
+    .brand h2{font-size:18px;margin-bottom:12px;color:#e6eeff}
+    .tagline{font-weight:700;color:#f3c36b}
+
+    .info{background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.4));padding:18px;border-radius:12px}
+    .info h3{font-size:20px;margin-bottom:6px}
+    .meta{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+    .pill{background:rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;font-weight:600}
+    .cta{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg,#ffb86b22,#6af0ff11)}
+    .btn.primary{background:linear-gradient(90deg,#ff9f2e,#ff6060);color:#fff}
+
+    /* details section */
+    .details{margin-top:26px;display:grid;grid-template-columns:1fr 380px;gap:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));padding:18px;border-radius:12px}
+    .events ul{list-style:none;padding-left:12px}
+    .events li{margin:8px 0;font-weight:700}
+
+    /* small responsive */
+    @media (max-width:960px){
+      .hero-content{grid-template-columns:1fr;gap:12px;padding:18px}
+      .details{grid-template-columns:1fr}
+      .brand h1{font-size:36px}
+      .hero{height:720px}
+    }
+
+    /* floating icons */
+    .float-icons{position:absolute;right:14px;bottom:14px;display:flex;flex-direction:column;gap:10px;z-index:8}
+    .icon{width:76px;height:76px;border-radius:12px;background:rgba(255,255,255,0.03);display:grid;place-items:center;font-weight:800}
+
+    /* subtle page layout */
+    footer{margin-top:28px;color:#c9d6ff66;text-align:center;font-size:14px}
+
+    /* small animation for headings */
+    .wavy{display:inline-block;transform:translateZ(0)}
+    .wavy span{display:inline-block;animation:wave .9s ease-in-out infinite;opacity:.98}
+    .wavy span:nth-child(2){animation-delay:.05s}
+    .wavy span:nth-child(3){animation-delay:.1s}
+    .wavy span:nth-child(4){animation-delay:.15s}
+    .wavy span:nth-child(5){animation-delay:.2s}
+    @keyframes wave{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+    /* Accessibility focus */
+    a:focus, button:focus{outline:3px solid rgba(255,200,80,0.14);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero" id="hero">
+      <div class="bg-layer bg-1" id="bg1"></div>
+      <div class="bg-layer bg-2" id="bg2"></div>
+      <div class="bg-layer bg-3" id="bg3"></div>
+
+      <div class="streaks" aria-hidden="true">
+        <div class="streak s1" id="s1"></div>
+        <div class="streak s2" id="s2"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="brand">
+          <h1>INTELLI-GENZ <small style="font-size:18px;opacity:.9;margin-left:8px">2K25</small></h1>
+          <h2>One Day National Level Technical Symposium</h2>
+          <div class="tagline">Organised by — Department of Artificial Intelligence & Data Science</div>
+
+          <p style="margin-top:12px;font-size:15px;line-height:1.35;color:#dfe8ff9a">Mahendra College of Engineering, Salem Campus — Minnampalli, Salem 636106</p>
+
+          <div style="margin-top:14px">
+            <div class="meta">
+              <div class="pill">📅 27st October 2025</div>
+              <div class="pill">💰 ₹250 / participant</div>
+            </div>
+
+            <div class="cta">
+              <a href="https://forms.gle/MMbAABt4W7NvyofRA" target="_blank" class="btn primary">Register Now</a>
+              <a href="mailto:intelligenz2k24@gmail.com?subject=INTELLI-GENZ%20Paper%20Submission" class="btn">Submit PPT (Email)</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="info">
+          <h3 class="wavy" aria-hidden="false">Event Highlights:</h3>
+          <div style="margin-top:10px">Paper Presentation (max 4 members per team). PPT send to <strong>intelligenz2k24@gmail.com</strong></div>
+
+          <div style="margin-top:12px;font-size:14px;opacity:.95">
+            <div style="margin-top:8px"><strong>Technical Events:</strong>
+              <ul style="margin-left:14px;margin-top:6px">
+                <li>TALKTREK</li>
+                <li>PATCHUP</li>
+                <li>QBIT</li>
+              </ul>
+            </div>
+
+            <div style="margin-top:8px"><strong>Non-Technical Events:</strong>
+              <ul style="margin-left:14px;margin-top:6px">
+                <li>HOTZONEX</li>
+                <li>CINEBLAST</li>
+              </ul>
+            </div>
+
+            <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+              <div style="font-weight:800">Workshop:</div>
+              <div style="font-size:13px;opacity:.9">"Bringing drawings to life with AI" — How AI can turn sketches into animated characters</div>
+            </div>
+
+            <div style="margin-top:12px;font-size:13px">Registration proof: upload screenshot of transaction ID (mandatory). Offline registration available.</div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <a href="https://chat.whatsapp.com/CUbBd2ingpe7cVQHWCBWjt" target="_blank" class="btn">Join WhatsApp</a>
+            <a href="mailto:intelligenz2k24@gmail.com" class="btn">Contact Organiser</a>
+          </div>
+        </aside>
+      </div><!-- hero-content -->
+
+      <div class="float-icons" aria-hidden="true">
+        <div class="icon">📞 99763 73716</div>
+        <div class="icon">📞 95002 56403</div>
+      </div>
+    </div><!-- hero -->
+
+    <div class="details">
+      <div class="card events">
+        <h3>Registration & Paper Submission</h3>
+        <p style="margin-top:8px">Each team maximum 4 members. Submit PPT to <strong>intelligenz2k24@gmail.com</strong> before <strong>29th Oct 2025</strong>. Registration fee ₹250 per participant.</p>
+
+        <h4 style="margin-top:14px">Guidelines</h4>
+        <ul style="margin-top:8px">
+          <li>Lunch will be provided to all participants.</li>
+          <li>Each participant may register for a maximum of two events in the allowed combinations.</li>
+          <li>Upload transaction screenshot during registration (mandatory).</li>
+        </ul>
+
+        <h4 style="margin-top:12px">Venue</h4>
+        <p>Mahendra College of Engineering, Salem Campus, Minnampalli, Salem — 636106</p>
+        <p><small>Google Maps: https://maps.app.goo.gl/oJywyPEEWTrsgCbo7</small></p>
+      </div>
+
+      <div class="card">
+        <h3>Organising Committee</h3>
+        <p style="margin-top:8px"><strong>Convenor:</strong> Dr. R. Reka (HOD, AI & DS) — 99763 73716</p>
+        <p><strong>Staff Coordinator:</strong> Mrs. N. Thenmozhi — 95002 56403</p>
+
+        <h4 style="margin-top:10px">Student Coordinators</h4>
+        <ul style="margin-top:8px">
+          <li>R. Ragul — 93453 39902</li>
+          <li>S. Janani — 63692 38620</li>
+          <li>M. Natarajan — 63817 75729</li>
+          <li>M. Dhanalakshmi — 80156 96512</li>
+        </ul>
+
+        <h4 style="margin-top:10px">Quick Links</h4>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+          <a class="btn" href="https://forms.gle/MMbAABt4W7NvyofRA" target="_blank">Online Registration</a>
+          <a class="btn" href="mailto:intelligenz2k24@gmail.com">Email for PPT</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © INTELLI-GENZ 2K25 • Department of AI & Data Science — Mahendra College of Engineering • Contact the organisers for any queries
+    </footer>
+  </div>
+
+  <script>
+    /**
+     * Unique JavaScript interactions
+     *  - Parallax mouse move for bg layers and streaks
+     *  - Floating subtle sway based on time
+     *  - Small tilt effect for hero when mouse enters
+     */
+
+    (function(){
+      const hero = document.getElementById('hero');
+      const bg1 = document.getElementById('bg1');
+      const bg2 = document.getElementById('bg2');
+      const bg3 = document.getElementById('bg3');
+      const s1 = document.getElementById('s1');
+      const s2 = document.getElementById('s2');
+
+      // convert coordinate to -1..1 range
+      function norm(x, w){return (x - w/2)/(w/2)}
+
+      // mousemove parallax
+      window.addEventListener('mousemove', (e)=>{
+        const nx = norm(e.clientX, window.innerWidth);
+        const ny = norm(e.clientY, window.innerHeight);
+
+        // background 1 moves slow (deep)
+        bg1.style.transform = `translate(${nx*18}px, ${ny*10}px) scale(1.02)`;
+        // mid-overlay moves a little more
+        bg2.style.transform = `translate(${nx*36}px, ${ny*22}px)`;
+        // highlight dots
+        bg3.style.transform = `translate(${nx*48}px, ${ny*34}px)`;
+
+        // streaks opposite direction for contrast
+        s1.style.transform = `translate(${nx * -120}px, ${ny * -40}px) rotate(6deg)`;
+        s2.style.transform = `translate(${nx * 140}px, ${ny * 36}px) rotate(-3deg)`;
+
+        // gentle rotate hero container
+        const rotY = nx*3; const rotX = ny*-2;
+        hero.style.transform = `perspective(1000px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+      });
+
+      // reset on mouse leave
+      hero.addEventListener('mouseleave', ()=>{
+        bg1.style.transform = '';
+        bg2.style.transform = '';
+        bg3.style.transform = '';
+        s1.style.transform = '';
+        s2.style.transform = '';
+        hero.style.transform = '';
+      });
+
+      // subtle floating animation using requestAnimationFrame
+      let t0 = performance.now();
+      function floatAnim(t){
+        const dt = (t - t0)/1000; // seconds
+        // slow oscillation for background
+        const x = Math.sin(dt*0.6)*6; const y = Math.cos(dt*0.7)*4;
+        bg1.style.filter = `blur(${0.6 + Math.abs(Math.sin(dt*0.2))*0.6}px) brightness(${0.34 + (Math.sin(dt*0.15)+1)*0.06})`;
+        bg2.style.opacity = `${0.98 - (Math.sin(dt*0.13)+1)*0.04}`;
+        s1.style.opacity = `${0.2 + (Math.sin(dt*0.35)+1)*0.03}`;
+        s2.style.opacity = `${0.18 + (Math.cos(dt*0.31)+1)*0.03}`;
+
+        // micro translate for extra depth
+        bg1.style.transform += ` translate(${x}px, ${y}px)`;
+        requestAnimationFrame(floatAnim);
+      }
+      requestAnimationFrame(floatAnim);
+
+      // Accessibility: keyboard focus styles for register button - small keyboard shortcut (r)
+      window.addEventListener('keydown', (e)=>{
+        if(e.key.toLowerCase()==='r'){
+          const a = document.querySelector('a.btn.primary');
+          if(a) a.focus();
+        }
+      });
+
+      // small extra: auto-copy registration link on clicking hero image
+      hero.addEventListener('dblclick', async ()=>{
+        try{
+          await navigator.clipboard.writeText('https://forms.gle/MMbAABt4W7NvyofRA');
+          alert('Registration link copied to clipboard!');
+        }catch(e){console.warn('Clipboard failed',e)}
+      });
+
+    })();
+  </script>
+</body>
+</html>
